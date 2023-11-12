@@ -27,7 +27,7 @@ Pada layout ini, saya membuat tiga button dan satu textview :
 1. `button_limit`, berfungsi sebagai tombol “Set Limit” yang nantinya ketika di tekan akan muncul sebuah pop-up untuk masukan limit angka yang ingin kita hitung.
 2. `button_count`, berfungsi sebagai tombol “count” yang nantinya ketika tombol ditekan akan menghitung bilangan fibonaccinya sesuai dengan yang kita limit. Juga berbeda warna pada setiap angka, agar tidak keliru.
 3. `button_restart`, berfungsi sebagai tombol restart yang nantinya angka akan kembali ke awal.
-4. `Textview_show_count`, yang berfungsi untuk menampilkan angka atau bilangan fibonaccinya yang tepat berada di tengah.
+4. `show_count`, yang berfungsi untuk menampilkan angka atau bilangan fibonaccinya yang tepat berada di tengah.
 Berikut adalah coding pada menu layout :
 
 > - **activity_main.xml**
@@ -41,90 +41,77 @@ Berikut adalah coding pada menu layout :
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button_toast"
-        android:layout_width="226dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="4dp"
+        android:id="@+id/setLimit"
+        android:layout_width="421dp"
+        android:layout_height="48dp"
         android:background="@color/colorPrimary"
         android:onClick="setLimit"
-        android:text="Limit"
+        android:text="Set limit"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.987"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="185dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="4dp"
-        android:background="@color/colorPrimary"
-        android:text="Toast"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <Button
         android:id="@+id/button2"
-        android:layout_width="204dp"
-        android:layout_height="wrap_content"
+        android:layout_width="205dp"
+        android:layout_height="46dp"
         android:background="@color/colorPrimary"
         android:onClick="countUp"
         android:text="@string/button_label_count"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.99"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/back"
-        android:layout_width="204dp"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:onClick="Back"
-        android:text="@string/Back"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore=",Rtlcompat"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/show_count"
-        android:layout_width="407dp"
-        android:layout_height="626dp"
+        android:layout_width="411dp"
+        android:layout_height="636dp"
         android:background="#FFFF00"
         android:gravity="center_vertical"
-        android:text="1"
+        android:text="@string/count_initial_value"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
-        android:textSize="160sp"
+        android:textSize="160dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_toast"
+        app:layout_constraintTop_toBottomOf="@+id/setLimit"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore=",Rtlcompat" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/button"
+        android:layout_width="202dp"
+        android:layout_height="49dp"
+        android:background="@color/colorPrimary"
+        android:onClick="Reset"
+        android:text="Back"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/show_count"
+        app:layout_constraintVertical_bias="0.0" />
 
+</androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
 > - **Strings.xml**
 ```
 <resources>
-    <string name="app_name">Toast</string>
+    <string name="app_name">Fibonacci</string>
     <string name="button_label_toast">Toast</string>
     <string name="button_label_count">Count</string>
     <string name="count_initial_value">0</string>
     <string name="coast_message">Hello Toast</string>
-    <string name="Back">kembali</string>
+    <string name="set_Limit">Set limit</string>
+    <string name="Reset">Reset</string>
 </resources>
 ```
 
@@ -280,7 +267,6 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 ```
-
 
 ## Hasil Run 
 
